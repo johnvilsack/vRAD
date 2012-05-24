@@ -1,0 +1,66 @@
+// LABELS & BADGES
+// ---------------
+
+// Base classes
+.label {
+  font-size: @baseFontSize;
+  font-weight: bold;
+  line-height: 14px; // ensure proper line-height if floated
+  color: lighten(@defaultText,25%);
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.1);
+  background-color: @gray;
+}
+.badge {
+  font-size: @baseFontSize * .846;
+  font-weight: bold;
+  line-height: 14px; // ensure proper line-height if floated
+  color: lighten(@defaultText,25%);
+  vertical-align: baseline;
+  white-space: nowrap;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.1);
+  background-color: @btnBackground;
+}
+// Set unique padding and border-radii
+.label {
+  padding: 3px 7px 4px 7px;
+  .border-radius(2px);
+}
+.badge {
+  padding: 5px 8px 5px 8px;
+  .border-radius(360px);
+}
+
+// Hover state, but only for links
+a {
+  &.label:hover,
+  &.badge:hover {
+    color: @white;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+// Colors
+// Only give background-color difference to links (and to simplify, we don't qualifty with `a` but [href] attribute)
+.label,
+.badge {
+  // Important (red)
+  &-important         { background-color: @btnDangerBackground; color: @white;}
+  &-important[href]   { background-color: darken(@btnDangerBackground, 10%); color: @white;}
+  // Warnings (orange)
+  &-warning           { background-color: @btnWarningBackground; color: darken(@yellow,40%);
+  text-shadow: 0 -1px 0 rgba(0,0,0,.15);}
+  &-warning[href]     { background-color: darken(@btnWarningBackground, 10%); color: darken(@yellow,40%);
+  text-shadow: 0 -1px 0 rgba(0,0,0,.15);}
+  // Success (green)
+  &-success           { background-color: @btnSuccessBackground; color: @white;}
+  &-success[href]     { background-color: darken(@btnSuccessBackground, 10%); color: @white;}
+  // Info (turquoise)
+  &-info              { background-color: @btnInfoBackground; color: @white;}
+  &-info[href]        { background-color: darken(@btnInfoBackground, 10%); color: @white;}
+  // Inverse (black)
+  &-inverse           { background-color: @btnInverseBackground; color: @white;}
+  &-inverse[href]     { background-color: darken(@btnInverseBackground, 10%); color: @white;}
+}
